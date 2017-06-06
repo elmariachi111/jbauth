@@ -1,11 +1,27 @@
 {% extends 'base.html.twig' %}
-
+{% block jumbotron %}
+<div class="jumbotron">
+    <div class="container">
+        <h1>This is index</h1>
+    </div>
+</div>
+{% endblock %}
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
-                <h1>this is index.</h1>
-            </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Basic Auth</h2>
+            <p><a class="btn btn-primary" href="{{ path('secret_basic_auth') }}" role="button">Basic Auth &raquo;</a></p>
+        </div>
+
+        <div class="col-md-4">
+            <h2>OAuth2</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn btn-warning" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>JWT</h2>
+            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-success" href="#" role="button">View details &raquo;</a></p>
         </div>
     </div>
 {% endblock %}

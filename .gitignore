@@ -19,3 +19,4 @@
 node_modules
 .sass-cache
 .gulp-scss-cache
+/web/fonts/

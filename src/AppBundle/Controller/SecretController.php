@@ -11,9 +11,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class SecretController extends Controller
 {
     /**
-     * @Route("/sshhh", name="secret")
+     * @Route("/basic_auth", name="secret_basic_auth")
      */
     public function secretAction() {
-        return $this->render('secret/sshhh.html.twig');
+        return $this->render('secret/basic_auth.html.twig');
     }
 }
