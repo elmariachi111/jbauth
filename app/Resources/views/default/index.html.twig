@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+
 {% block jumbotron %}
 <div class="jumbotron">
     <div class="container">
@@ -15,7 +16,15 @@
 
         <div class="col-md-4">
             <h2>OAuth2</h2>
-            <p><a class="btn btn-warning" href="{{ path('secret_oauth') }}" role="button">OAuth2 &raquo;</a></p>
+            {{ form(oauthForm) }}
+            <form method="GET" action="{{ path('secret_oauth') }}">
+                <div class="input-group">
+                    <input type="text" name="access_token" class="form-control" value="" placeholder="get an access token first" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Go!</button>
+                    </span>
+                </div>
+            </form>
         </div>
         <div class="col-md-4">
             <h2>JWT</h2>
