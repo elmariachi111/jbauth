@@ -3,7 +3,6 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\OAuth\Client;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -31,7 +30,7 @@ class OAuth2CredentialFormType extends AbstractType
             ->add('password', PasswordType::class)
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn btn-default'
+                    'class' => 'btn btn-warning'
                 ]
             ])
         ;

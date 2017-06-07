@@ -17,7 +17,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
             new \FOS\UserBundle\FOSUserBundle(),
-            new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
+            new \FOS\OAuthServerBundle\FOSOAuthServerBundle(),
+            new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
 
             new AppBundle\AppBundle(),
         ];

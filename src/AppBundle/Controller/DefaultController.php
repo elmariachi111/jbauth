@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\OAuth\Client;
+use AppBundle\Form\JwtCredentialFormType;
 use AppBundle\Form\OAuth2CredentialFormType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -14,7 +15,7 @@ class DefaultController extends Controller
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         $oauthClient = $this->getDoctrine()->getRepository(Client::class)->findOneBy([]);
 
@@ -24,8 +25,14 @@ class DefaultController extends Controller
             'client' => $oauthClient
         ]);
 
+        $jwtForm = $this->createForm(JwtCredentialFormType::class, null, [
+            'action' => $this->generateUrl('jwt_login_check'),
+            'method' => Request::METHOD_POST,
+        ]);
+
         return $this->render('default/index.html.twig', [
-            'oauthForm' => $oauthForm->createView()
+            'oauthForm' => $oauthForm->createView(),
+            'jwtForm' => $jwtForm->createView()
         ]);
     }
 
