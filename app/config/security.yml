@@ -26,10 +26,29 @@ security:
             #logout:       true
             #anonymous:    true
         bauth:
-          pattern: ^/
+          pattern: ^/secret/basic_auth
           http_basic: ~
           stateless: true
           provider: fos_userbundle
+# ----
+        oauth_token:
+          pattern:    ^/oauth/v2/token
+          security:   false
+        oauth_authorize:
+          pattern:    ^/oauth/v2/auth
+          # Add your favorite authentication process here:
+          form_login:
+            provider: fos_userbundle
+            check_path: /oauth/v2/auth/login_check
+            login_path: /oauth/v2/auth/login
+          anonymous: true
+
+        oauth:
+          pattern:    ^/secret/oauth
+          fos_oauth:  true
+          stateless:  true
+          anonymous:  false
+# -----
 
     access_control:
       - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
@@ -37,6 +56,7 @@ security:
       - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
 
       - { path: ^/secret/basic_auth, role: ROLE_ADMIN }
+      - { path: ^/secret/oauth, role: IS_AUTHENTICATED_FULLY }
 
 
               # activate different ways to authenticate
